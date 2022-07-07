@@ -63,6 +63,7 @@ public class Spider {
             e.printStackTrace();
         }
        // Jsoup.clean(sb.toString(),new Whitelist());
+
         return Jsoup.parse(sb.toString()).text();
         //return sb.toString();
 
