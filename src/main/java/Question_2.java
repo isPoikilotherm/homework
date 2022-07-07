@@ -18,7 +18,7 @@ public class Question_2 {
             while ((line = br.readLine()) != null) {
                 check(line);
                 sum++;
-              //  System.out.println(line);
+                //  System.out.println(line);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -37,32 +37,42 @@ public class Question_2 {
     }
 
     public static void check(String str){
+        str = str.trim();
         if (str.length()==0){
             return;
         }
-        String[] s = str.split(" ");
-        int i=0;
-        while (i<s.length&&(s[i].equals("")||s[i].equals(" "))){
-            i++;
-        }
-        if (i==s.length){
+//        String[] s = str.split(" ");
+//        int i=0;
+//        while (i<s.length&&(s[i].equals("")||s[i].equals(" "))){
+//            i++;
+//        }
+//        if (i==s.length){
+//            return;
+//        }
+        if (str.startsWith("*/")){
+            tag=false;
             return;
         }
-            if (s[i].equals("*/")){
-                tag=false;
-                return;
-            }
-            if (s[i].equals("*")||s[i].equals("/**")||s[i].equals("//")||tag){
-                return;
-            }
-            if (s[i].equals("/*")){
-                tag=true;
-                return;
-            }
-            if (s[i].toCharArray()[0]=='/'){
-                return;
-            }
-            valid_count+=1;
+//      if (s[i].equals("*")||s[i].equals("/**")||s[i].equals("//")||tag){
+//          return;
+//      }
+        if (str.startsWith("*")||str.startsWith("/**")||str.startsWith("//")||tag){
+            return;
+        }
+        if (str.equals("/*")){
+            tag=true;
+            return;
+        }
+//      if (s[i].toCharArray()[0]=='/'){
+//          System.out.println(s[i]);
+//          return;
+//      }
+//      if (s[i].startsWith("//")){
+//       // System.out.println(s[i]);
+//          return;
+//        }
+        valid_count+=1;
+        //   System.out.println(str);
     }
 
 
