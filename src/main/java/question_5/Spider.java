@@ -64,6 +64,7 @@ public class Spider {
         }
        // Jsoup.clean(sb.toString(),new Whitelist());
 
+      //  System.out.println(Jsoup.parse(sb.toString()));
         return Jsoup.parse(sb.toString()).text();
         //return sb.toString();
 
