@@ -86,7 +86,8 @@ public class Question_1 {
         String[] strings = str.split(" ");
         if (strings[0].equals("GET")){
             Get_Count+=1;
-        }else {
+        }
+        if (strings[0].equals("POST")){
             Post_Count+=1;
         }
         count_map.put(strings[1],count_map.getOrDefault(strings[1],0)+1);
