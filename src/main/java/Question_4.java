@@ -13,6 +13,7 @@ public class Question_4 {
         String command=scanner.nextLine();
         String[] commands = command.split(" \\| ");
         List<String> result=new ArrayList<>();
+
         for (String cmd : commands) {
             if (is_cat(cmd)){
                 result = cat_command(cmd);
