@@ -72,7 +72,7 @@ public class Question_4 {
     public static List<String> grep_command(List<String> list,String command){
         String[] s = command.split(" ");
         List<String> res=new ArrayList<>();
-        if (s.length==3){//自带文件名
+        if (s.length==3){       //自带文件名
             BufferedReader br = new ReadFileUtil().getreader(s[1]);
             String line=null;
             try {
@@ -98,7 +98,7 @@ public class Question_4 {
         String[] s = command.split(" ");
         List<String> res=new ArrayList<>();
         int count=0;
-        if (s.length==3){//自带文件名
+        if (s.length==3){       //自带文件名
             BufferedReader br = new ReadFileUtil().getreader(s[1]);
             String line=null;
             try {

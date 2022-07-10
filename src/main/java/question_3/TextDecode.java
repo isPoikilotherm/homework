@@ -11,7 +11,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 public class TextDecode {
 
@@ -66,13 +65,10 @@ public class TextDecode {
 
                }
                 fw.write(line+"\r\n");
-                //fw.write("\\n");
                 fw.flush();
             }
             fw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
