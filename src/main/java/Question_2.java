@@ -4,27 +4,28 @@ import java.io.*;
 import java.net.URISyntaxException;
 
 public class Question_2 {
-    static String url;
-    static int sum;
-    static int valid_count;
-    static boolean tag;
+    static String file;
+    static int sum;         //总行数
+    static int valid_count;         //有效行数
+    static boolean tag;     //标志，判断是否在段注释内
 
     public static void main(String[] args) {
-        url="src/main/resources/StringUtils.java";
-        BufferedReader br = new ReadFileUtil().getreader(url);
+        file="src/main/resources/StringUtils.java";
+        BufferedReader br = new ReadFileUtil().getreader(file);
         String line = null;
         tag=false;
         try {
             while ((line = br.readLine()) != null) {
                 check(line);
                 sum++;
-                //  System.out.println(line);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         System.out.println(sum);
         System.out.println(valid_count);
+
         try {
             FileWriter fw = new FileWriter(new File(ClassLoader.getSystemResource("").
                     toURI()).getAbsolutePath()+"/validLineCount.txt ",false);
@@ -37,43 +38,26 @@ public class Question_2 {
     }
 
     public static void check(String str){
-        str = str.trim();
-        if (str.length()==0){
+        str = str.trim();       //删除前后空格
+        if (str.length()==0){       //空行
             return;
         }
-//        String[] s = str.split(" ");
-//        int i=0;
-//        while (i<s.length&&(s[i].equals("")||s[i].equals(" "))){
-//            i++;
-//        }
-//        if (i==s.length){
-//            return;
-//        }
-        if (str.startsWith("*/")){
+
+        if (str.startsWith("*/")){     //判断注释段是否结束
             tag=false;
             return;
         }
-//      if (s[i].equals("*")||s[i].equals("/**")||s[i].equals("//")||tag){
-//          return;
-//      }
-        if (str.startsWith("*")||str.startsWith("/**")||str.startsWith("//")||tag){
-            return;
-        }
-        if (str.equals("/*")){
+
+        if (str.startsWith("/*")){      //判断注释段是否开始
             tag=true;
             return;
         }
-//      if (s[i].toCharArray()[0]=='/'){
-//          System.out.println(s[i]);
-//          return;
-//      }
-//      if (s[i].startsWith("//")){
-//       // System.out.println(s[i]);
-//          return;
-//        }
-        valid_count+=1;
-        //   System.out.println(str);
-    }
 
+        if (str.startsWith("/")||tag){      //判断是否为注释行或者是否在注释段内
+            return;
+        }
+
+        valid_count+=1;
+    }
 
 }
