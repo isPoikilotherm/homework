@@ -17,6 +17,9 @@ public class Spider {
     String job() {
         int sum=0,chinese=0,english=0,tag=0;
         String html=getData();
+        if (html==null){
+            return null;
+        }
         char[] chars = html.toCharArray();
         System.out.println(chars);
         for (char ch : chars) {
@@ -46,7 +49,9 @@ public class Spider {
         } catch (MalformedURLException e) {
             System.out.println("URL格式错误");
             e.printStackTrace();
+            return null;
         }
+
         try {
             InputStream is = req.openStream();
             InputStreamReader isr=new InputStreamReader(is);

@@ -10,6 +10,11 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
         Spider spider=new Spider(msg);
         String res= spider.job();
         Channel channel = ctx.channel();
-        channel.writeAndFlush(res);
+        if (res==null){
+            channel.writeAndFlush("URL格式错误,请检查网址是否输入正确");
+        }else {
+            channel.writeAndFlush(res);
+        }
+
     }
 }
