@@ -14,13 +14,12 @@ public class Spider {
     Spider(String url){
         this.url=url;
     }
-    String job() throws Exception{
+    String job() {
         int sum=0,chinese=0,english=0,tag=0;
         String html=getData();
         char[] chars = html.toCharArray();
         System.out.println(chars);
         for (char ch : chars) {
-           // System.out.println(ch);
             if (Character.isSpaceChar(ch)){
                 continue;
             }
@@ -34,7 +33,6 @@ public class Spider {
             }
 
         }
-        //  System.out.println(html);
        return "总字数是："+sum+";  汉字数是："+chinese+";  字母数是："+english+";  符号数是"+tag;
 
     }
@@ -50,7 +48,7 @@ public class Spider {
             e.printStackTrace();
         }
         try {
-            InputStream is=req.openStream();
+            InputStream is = req.openStream();
             InputStreamReader isr=new InputStreamReader(is);
             BufferedReader br=new BufferedReader(isr);
             String line=br.readLine();
@@ -62,16 +60,7 @@ public class Spider {
         catch (IOException e) {
             e.printStackTrace();
         }
-       // Jsoup.clean(sb.toString(),new Whitelist());
 
-      //  System.out.println(Jsoup.parse(sb.toString()));
         return Jsoup.parse(sb.toString()).text();
-        //return sb.toString();
-
-
-
-
-
-      //  return "";
     }
 }
